@@ -1,19 +1,8 @@
 {
   "name": "chit-chat",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "", 
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/trained-for-nothing/chit-chat.git"
-  },
-  "author": "Trained For Nothing",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/trained-for-nothing/chit-chat/issues"
-  },
-  "homepage": "https://github.com/trained-for-nothing/chit-chat#readme"
+	"start":"node index.js"
+  }
 }
