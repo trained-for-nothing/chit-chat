@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require(".");
 
-const User = sequelize.define("User", {
+const User = sequelize.define("Users", {
 	username: {
 		type: DataTypes.STRING,
 		allowNull: false,
@@ -17,7 +17,5 @@ const User = sequelize.define("User", {
 		type: DataTypes.STRING,
 	},
 });
-
-User.sync();
 
 module.exports = User;
