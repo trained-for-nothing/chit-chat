@@ -1,0 +1,90 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Login
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css')
+.container
+  .row
+    .col-md-6
+      .card
+        form.box
+          h1 Login
+          p.text-muted  Please enter your login Username and Password!
+          input(type='text' name='username' placeholder='Username')
+          input(type='password' name='password' placeholder='Password')
+          a.forgot.text-muted(href='#') Forgot password?
+          input(type='submit' name='' value='Login' href='#')
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+style(text='text/css').
+  body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: linear-gradient(to right, #b92b27, #1565c0)
+  }
+
+  .box {
+      width: 500px;
+      padding: 40px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: #191919;
+      text-align: center;
+      transition: 0.25s;
+      margin-top: 100px
+  }
+
+  .box input[type="text"],
+  .box input[type="password"] {
+      border: 0;
+      background: none;
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      border: 2px solid #3498db;
+      padding: 10px 10px;
+      width: 250px;
+      outline: none;
+      color: white;
+      border-radius: 24px;
+      transition: 0.25s
+  }
+
+  .box h1 {
+      color: white;
+      text-transform: uppercase;
+      font-weight: 500
+  }
+
+  .box input[type="text"]:focus,
+  .box input[type="password"]:focus {
+      width: 300px;
+      border-color: #2ecc71
+  }
+
+  .box input[type="submit"] {
+      border: 0;
+      background: none;
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      border: 2px solid #2ecc71;
+      padding: 14px 40px;
+      outline: none;
+      color: white;
+      border-radius: 24px;
+      transition: 0.25s;
+      cursor: pointer
+  }
+
+  .box input[type="submit"]:hover {
+      background: #2ecc71
+  }
+
+  .forgot {
+      text-decoration: underline
+  }
