@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const { login, logout, checkUserAuthentication ,viewProfifle} = require("./../controllers");
+const { login, logout, checkUserAuthentication ,viewProfile} = require("./../controllers");
 
 router.get("/login", login);
 router.get("/logout", logout);
 router.post("/login", checkUserAuthentication);
-router.get("/profile", viewProfifle);
+router.get("/profile", viewProfile);
 
 
 

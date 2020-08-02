@@ -8,6 +8,7 @@ function login(req, res) {
 }
 
 
+
 function logout(req, res) {
 	req.session.user = null;
 	res.redirect("/login");
@@ -30,7 +31,8 @@ function checkUserAuthentication(req, res){
 			res.send("somthing went worng");
 		});
 }
-function viewProfifle (req, res){
+
+function viewProfile (req, res){
 	//console.log(req.session);
 	if (req.session.user) {
 		res.render("profile");
@@ -39,4 +41,4 @@ function viewProfifle (req, res){
 	}
 }
 
-module.exports = { login, logout, checkUserAuthentication, viewProfifle};
+module.exports = { login, logout, checkUserAuthentication, viewProfile};
