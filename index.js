@@ -1,27 +1,31 @@
 const express = require("express");
-const { unscoped } = require("./database/models/User");
+const bodyParser = require("body-parser");
 const app = express();
-var session = require("express-session");
-var cookieParser = require("cookie-parser");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+
 const routes = require("./routes");
+const Post = require("./database/models/Post");
+const User = require("./database/models/User");
 
 const port = 3000;
 
-const User = require("./database/models/User");
-
-function createUser(params) {
+function createUser(params){
 	User.create({
 		username: "tanya",
 		password: "1122",
 	}).catch((err) => {
 		console.log(err);
 	});
+
 }
 
-User.sync().then(createUser);
 
-var bodyParser = require("body-parser");
-const router = require("./routes");
+User.sync().then(createUser);
+Post.sync();
+
+
+
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(
 	bodyParser.urlencoded({
@@ -38,7 +42,7 @@ app.set("views", "./views");
 
 app.use(express.static("./public/"));
 
-app.use("", routes);
+app.use(routes);
 
 app.listen(port, () =>
 	console.log(`Example app listening at http://localhost:${port}`)
