@@ -1,4 +1,5 @@
 const User = require("./../database/models/User");
+const Post = require("./../database/models/Post")
 function login(req, res) {
 	if (req.session.user) {
 		res.redirect("/profile");
@@ -6,7 +7,6 @@ function login(req, res) {
 		res.render("login");
 	}
 }
-
 
 
 function logout(req, res) {
@@ -48,6 +48,8 @@ function viewProfile (req, res){
 	}
 }
 
+
+
 function fetchUserDetails(req, res){
 	return new Promise((resolve, reject) => {
 		User.findOne({
@@ -60,4 +62,34 @@ function fetchUserDetails(req, res){
 	
 }
 
-module.exports = { login, logout, checkUserAuthentication, viewProfile};
+
+function addPost(req, res) {
+	if (req.session.user) {
+		res.render("addPost");
+	} else {
+		res.redirect("/login");
+	}
+}
+
+
+
+function createPost(req, res){
+	if(req.session.user){
+		Post.create({
+			title: req.body.title,
+			description: req.body.description,
+			userId : req.session.user.id			
+		})
+		.then(()=> {
+			res.redirect("/addPost");
+		})
+		.catch((error)=>{
+			res.send(err);
+		})
+	} else {
+		res.redirect("/login");
+	}
+	
+}
+
+module.exports = { login, logout, checkUserAuthentication, viewProfile, addPost, createPost };
