@@ -35,10 +35,29 @@ function checkUserAuthentication(req, res){
 function viewProfile (req, res){
 	//console.log(req.session);
 	if (req.session.user) {
-		res.render("profile");
+		fetchUserDetails(req,res).then((user) => {
+			res.render("profile",{
+				username: user.username,
+				fname: user.firstName,
+				lname: user.lastName
+			})
+
+		})
 	} else {
 		res.redirect("/login");
 	}
+}
+
+function fetchUserDetails(req, res){
+	return new Promise((resolve, reject) => {
+		User.findOne({
+			username: req.session.user,
+		})
+		.then((user)=> {
+			resolve(user)
+		}).catch((err) => reject(err));
+	})
+	
 }
 
 module.exports = { login, logout, checkUserAuthentication, viewProfile};
