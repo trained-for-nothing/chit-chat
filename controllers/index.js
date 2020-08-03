@@ -48,7 +48,8 @@ function viewProfile(req, res) {
 	}
 }
 
-function fetchUserDetails(req, res) {
+
+function fetchUserDetails(req, res){
 	return new Promise((resolve, reject) => {
 		User.findOne({
 			username: req.session.user,
@@ -73,24 +74,44 @@ function createPost(req, res) {
 		Post.create({
 			title: req.body.title,
 			description: req.body.description,
-			UserId: req.session.user.id,
+			UserId : req.session.user.id			
 		})
-			.then(() => {
-				res.redirect("/addPost");
-			})
-			.catch((error) => {
-				res.send(err);
-			});
+		.then(()=> {
+			res.redirect("/addPost");
+		})
+		.catch((error)=>{
+
+		})
 	} else {
 		res.redirect("/login");
 	}
 }
 
-module.exports = {
-	login,
-	logout,
-	checkUserAuthentication,
-	viewProfile,
-	addPost,
-	createPost,
-};
+function feed(req, res){
+	if (req.session.user) {
+		fetchPost(req,res).then((post) => {
+			res.render("feed",{
+				// title:post.title,
+				// description:post.description,
+				post:post,
+				username:req.session.user.username
+			})
+
+		})
+	} else {
+		res.redirect("/login");
+	}
+}
+
+ function fetchPost(req, res){
+	return new Promise((resolve, reject) => {
+		Post.findAll({
+			UserId:req.session.user.id
+		})
+		.then((post)=> {
+			resolve(post)
+		}).catch((error) => reject(error));
+	});
+ }
+module.exports = { login, logout, checkUserAuthentication, viewProfile, addPost, createPost, feed};
+
