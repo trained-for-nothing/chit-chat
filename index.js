@@ -10,18 +10,7 @@ const User = require("./database/models/User");
 
 const port = 3000;
 
-function createUser(params){
-	User.create({
-		username: "tanya",
-		password: "1122",
-	}).catch((err) => {
-		console.log(err);
-	});
-
-}
-
-
-User.sync().then(createUser);
+User.sync();
 Post.sync();
 
 

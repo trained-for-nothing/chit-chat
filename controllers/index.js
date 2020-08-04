@@ -18,18 +18,20 @@ function checkUserAuthentication(req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
 	User.findOne({
-		username: username,
+		where: {			
+			username: username
+		}
 	})
 		.then((user) => {
 			if (user.password == password) {
 				req.session.user = user;
 				res.redirect("/profile");
 			} else {
-				res.send("wrong pass");
+				res.send("wrong password");
 			}
 		})
 		.catch((err) => {
-			res.send("somthing went worng");
+			res.send("wrong username");
 		});
 }
 
@@ -113,5 +115,34 @@ function feed(req, res){
 		}).catch((error) => reject(error));
 	});
  }
-module.exports = { login, logout, checkUserAuthentication, viewProfile, addPost, createPost, feed};
 
+ function signup(req, res) {
+	if (req.session.user) {
+		res.redirect("/feed");
+	} else {
+		res.render("signup")
+	}
+}
+
+
+function registerUser(req, res) {
+	if (req.session.user) {
+		res.redirect("/feed");
+	}
+	else{
+		User.create({
+			username: req.body.username,
+			firstname: req.body.firstName,
+			lastname: req.body.lastName,
+			password: req.body.password,
+			
+		})
+		.then(()=> {
+			res.redirect("/login");
+		})
+
+		.catch((error)=>{
+		})
+	} 
+}
+module.exports = {login, logout, checkUserAuthentication, viewProfile, addPost, createPost, feed, registerUser, signup};
