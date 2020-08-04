@@ -132,8 +132,8 @@ function registerUser(req, res) {
 	else{
 		User.create({
 			username: req.body.username,
-			firstname: req.body.firstName,
-			lastname: req.body.lastName,
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
 			password: req.body.password,
 			
 		})
