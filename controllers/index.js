@@ -18,18 +18,20 @@ function checkUserAuthentication(req, res) {
 	let username = req.body.username;
 	let password = req.body.password;
 	User.findOne({
-		username: username,
+		where: {			
+			username: username
+		}
 	})
 		.then((user) => {
 			if (user.password == password) {
 				req.session.user = user;
 				res.redirect("/profile");
 			} else {
-				res.send("wrong pass");
+				res.send("wrong password");
 			}
 		})
 		.catch((err) => {
-			res.send("somthing went worng");
+			res.send("wrong username");
 		});
 }
 
