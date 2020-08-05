@@ -7,11 +7,13 @@ const cookieParser = require("cookie-parser");
 const routes = require("./routes");
 const Post = require("./database/models/Post");
 const User = require("./database/models/User");
+const Like = require("./database/models/Like")
 
 const port = 3000;
 
 User.sync();
 Post.sync();
+Like.sync();
 
 
 
