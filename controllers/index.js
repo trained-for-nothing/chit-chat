@@ -1,5 +1,6 @@
 const User = require("./../database/models/User");
 const Post = require("./../database/models/Post");
+const Like = require("./../database/models/Like");
 
 function login(req, res) {
 	if (req.session.user) {
@@ -54,7 +55,9 @@ function viewProfile(req, res) {
 function fetchUserDetails(req, res){
 	return new Promise((resolve, reject) => {
 		User.findOne({
-			username: req.session.user,
+			where: {		
+			username: req.session.user.username,
+			}
 		})
 			.then((user) => {
 				resolve(user);
@@ -108,7 +111,9 @@ function feed(req, res){
  function fetchPost(req, res){
 	return new Promise((resolve, reject) => {
 		Post.findAll({
+			where: {		
 			UserId:req.session.user.id
+			}
 		})
 		.then((post)=> {
 			resolve(post)
