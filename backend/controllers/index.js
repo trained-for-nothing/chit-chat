@@ -112,17 +112,34 @@ function feed(req, res){
 		}).catch((error) => reject(error));
 	});
  }
- 
-module.exports = { login, logout, checkUserAuthentication, viewProfile, addPost, createPost, feed};
+
+ function signup(req, res) {
+	if (req.session.user) {
+		res.redirect("/feed");
+	} else {
+		res.render("signup")
+	}
+}
 
 
-/*
+function registerUser(req, res) {
+	if (req.session.user) {
+		res.redirect("/feed");
+	}
+	else{
+		User.create({
+			username: req.body.username,
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
+			password: req.body.password,
+			
+		})
+		.then(()=> {
+			res.redirect("/login");
+		})
 
- Model 
-
- get -> retrive
- post -> bhejta hai
- put -> update
- delete -> delete
-
-*/
+		.catch((error)=>{
+		})
+	} 
+}
+module.exports = {login, logout, checkUserAuthentication, viewProfile, addPost, createPost, feed, registerUser, signup};
