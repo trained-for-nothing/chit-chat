@@ -1,12 +1,9 @@
 const User = require("./../database/models/User");
 const Post = require("./../database/models/Post");
+const { Router } = require("express");
 
 function login(req, res) {
-	if (req.session.user) {
-		res.redirect("/profile");
-	} else {
-		res.render("login");
-	}
+	res.render("login");
 }
 
 function logout(req, res) {
@@ -37,7 +34,7 @@ function checkUserAuthentication(req, res) {
 
 function viewProfile(req, res) {
 	//console.log(req.session);
-	if (req.session.user) {
+	if (true) {
 		fetchUserDetails(req, res).then((user) => {
 			res.render("profile", {
 				username: user.username,
@@ -64,7 +61,7 @@ function fetchUserDetails(req, res){
 }
 
 function addPost(req, res) {
-	if (req.session.user) {
+	if (true) {
 		res.render("addPost");
 	} else {
 		res.redirect("/login");
@@ -72,7 +69,7 @@ function addPost(req, res) {
 }
 
 function createPost(req, res) {
-	if (req.session.user) {
+	if (true) {
 		Post.create({
 			title: req.body.title,
 			description: req.body.description,
@@ -115,5 +112,17 @@ function feed(req, res){
 		}).catch((error) => reject(error));
 	});
  }
+ 
 module.exports = { login, logout, checkUserAuthentication, viewProfile, addPost, createPost, feed};
 
+
+/*
+
+ Model 
+
+ get -> retrive
+ post -> bhejta hai
+ put -> update
+ delete -> delete
+
+*/
