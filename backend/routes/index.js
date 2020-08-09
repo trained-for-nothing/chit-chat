@@ -1,19 +1,12 @@
 const router = require("express").Router();
-// const { login, logout, checkUserAuthentication ,viewProfile, addPost, createPost, feed, registerUser, signup} = require("./../controllers");
-const { removeAttribute } = require("../database/models/User");
+const { login, logout, isAuthenticated} = require("./../controllers");
 const user = require('./user');
-// const profile = require('./profile');
-// const post = require('./post');
-// const feed = require('./feed');
-
+const post = require('./post');
 
 router.use("/user", user);
-// router.use("/profile", profile);
-// router.use("/post", post);
-// router.use("/feed", feed);
 
-// router.get("/signup", signup);
-// router.post("/signup", registerUser);
+router.use(isAuthenticated);
+router.use("/post", post);
 
 
 module.exports = router;
