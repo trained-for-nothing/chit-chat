@@ -1,28 +1,32 @@
 const Post = require("./../database/models/Post");
 
-function add(req, res){
+function addPost(req, res){
     Post.create(req.body)
         .then((s)=> {
         res.send("Post added successfully");
     }).catch((e)=> res.send("error"));
 }
 
-function getAll(req, res){
+function getAllPosts(req, res){
     Post.findAll()
         .then((posts)=> {
         res.send((posts))
     }).catch((e)=> res.send("error"));
 }
 
-function get(req, res){
+function getPost(req, res){
     Post.findOne({
         where: {
             id: req.params.id,
             }
     }).then((post) => {
+        if(post){
             res.send((post))
-    })
-        .catch((err) => res.send("error"));
+        }
+        else{
+            res.send([]);
+        }
+    }).catch((err) => res.send("error"));
 }
 
 function deletePost(req, res){
@@ -36,7 +40,7 @@ function deletePost(req, res){
     .catch((e)=> res.send("error"));
 }
 
-function update(req, res){
+function updatePost(req, res){
     Post.update(req.body,
         { 
             where: {
@@ -48,4 +52,4 @@ function update(req, res){
     }).catch((e)=> res.send("error"));
 }
 
-module.exports = {add, getAll, get, deletePost, update};
+module.exports = {addPost, getAllPosts, getPost, deletePost, updatePost};
