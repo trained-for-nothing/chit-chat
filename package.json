@@ -4,7 +4,8 @@
 	"description": "",
 	"scripts": {
 		"start": "node backend/index.js",
-		"dev": "nodemon backend/index.js"
+		"dev": "nodemon backend/index.js",
+		"frontend": "node frontend/src/index.js"
 	},
 	"dependencies": {
 		"body-parser": "^1.19.0",
