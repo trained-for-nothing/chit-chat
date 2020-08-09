@@ -52,4 +52,4 @@ const deleteUser = (req, res) => {
 }
 
 
-module.exports = { createUser, getAllUsers, getUserById, deleteUser, updateUserById };
+module.exports = { createUser, getAllUsers, getUser, deleteUser, updateUser };
