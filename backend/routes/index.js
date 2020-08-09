@@ -2,9 +2,9 @@ const router = require("express").Router();
 // const { login, logout, checkUserAuthentication ,viewProfile, addPost, createPost, feed, registerUser, signup} = require("./../controllers");
 const { removeAttribute } = require("../database/models/User");
 const user = require('./user');
-const profile = require('./profile');
-const post = require('./post');
-const feed = require('./feed');
+// const profile = require('./profile');
+// const post = require('./post');
+// const feed = require('./feed');
 
 
 router.use("/user", user);
