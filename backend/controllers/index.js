@@ -47,19 +47,6 @@ function viewProfile(req, res) {
 	}
 }
 
-
-function fetchUserDetails(req, res){
-	return new Promise((resolve, reject) => {
-		User.findOne({
-			username: req.session.user,
-		})
-			.then((user) => {
-				resolve(user);
-			})
-			.catch((err) => reject(err));
-	});
-}
-
 function addPost(req, res) {
 	if (true) {
 		res.render("addPost");
