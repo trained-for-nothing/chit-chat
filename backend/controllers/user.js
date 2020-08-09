@@ -1,51 +1,55 @@
-const User = require("./../database/models/User");
+const User = require("../database/models/User");
 
-function createUser(req, res){
-    User.create(req.body)
-        .then((s)=> {
-        res.send("successfully created");
-    }).catch((e)=> res.send("error"));
+const createUser = (req, res) => {
+    User.create({ ...req.body }).then((data) => {
+        res.json("Success");
+    }).catch((e) => res.json("Failed"));
 }
 
-function getAllUsers(req, res){
-    User.findAll()
-        .then((users)=> {
-        res.send(JSON.stringify(users))
-    }).catch((e)=> res.send("error"));
-}
-
-function getUserById(req, res){
-    User.findOne({
-        where: { id: req.params.id,}
-    }).then((user) => {
-        if (user) {
-            res.send((user))
-        } else {
-            res.send([]);
-        }
+const getAllUsers = (req, res) => {
+    User.findAll({
+        attributes: ["username", "firstName", "lastName"]
+    }).then((data) => {
+        res.json(data);
+    }).catch((e) => {
+        res.json("Failed");
     })
-        .catch((err) => res.send("error"));
 }
 
-function deleteUser(req, res){
+const getUserById = (req, res) => {
+    User.findAll({
+        attributes: ["username", "firstName", "lastName"],
+        where: { "id": req.params.id, }
+    }).then((data) => {
+        res.json(data);
+    }).catch((e) => {
+        res.json("Failed");
+    })
+}
+
+const updateUserById = (req, res) => {
+    User.update(req.body, {
+        where: {
+            "id": req.params.id,
+        }
+    }).then((data) => {
+        res.json("success");
+    }).catch((e) => {
+        res.json("Failed");
+    })
+}
+
+const deleteUser = (req, res) => {
     User.destroy({
-        where:{
-            id: req.params.id,
+        where: {
+            "id": req.params.id,
         }
-    }).then((user) =>{
-        res.send("deleted");
+    }).then((data) => {
+        res.json("success");
+    }).catch((e) => {
+        res.json("Failed");
     })
-    .catch((e)=> res.send("error"));
 }
 
-function updateUser(req, res){
-    User.update(req.body,
-        { 
-            where: {id: req.params.id} 
-        }
-      ).then((user) => {
-        res.send("updated");
-    }).catch((e)=> res.send("error"));
-}
 
-module.exports = {createUser, getAllUsers, getUserById, deleteUser, updateUser};
+module.exports = { createUser, getAllUsers, getUserById, deleteUser, updateUserById };
