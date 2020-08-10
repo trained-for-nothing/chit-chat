@@ -1,12 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
-import {Button} from '@material-ui/core';
-import './App.css';
-
+import React from "react";
+import { Button } from "@material-ui/core";
+import Form from "./Components/Forms";
 function App() {
-  return (
-    <Button variant="contained" color="primary">Hello</Button>
-  );
+  return <Form />;
 }
 
 export default App;
