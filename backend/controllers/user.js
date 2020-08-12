@@ -16,7 +16,7 @@ const getAllUsers = (req, res) => {
     })
 }
 
-const getUserById = (req, res) => {
+const getUser = (req, res) => {
     User.findAll({
         attributes: ["username", "firstName", "lastName"],
         where: { "id": req.params.id, }
@@ -27,7 +27,7 @@ const getUserById = (req, res) => {
     })
 }
 
-const updateUserById = (req, res) => {
+const updateUser = (req, res) => {
     User.update(req.body, {
         where: {
             "id": req.params.id,
