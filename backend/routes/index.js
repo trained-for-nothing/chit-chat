@@ -4,11 +4,13 @@ const modelUser = require("../database/models/User");
 const modelPost = require("../database/models/Post");
 const user = require('./user');
 const post = require('./post');
+const like = require('./like');
 
 router.use("/user", user);
 
 router.use(isAuthenticated);
 router.use("/post", post);
+router.use("/like", like);
 // router.get("/profile", viewProfile);
 // router.get("/addPost", addPost);
 // router.post("/addPost", createPost)
