@@ -1,7 +1,24 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "normalize.css";
 import SignUp from "./Components/SignUp";
+import SignIn from "./Components/SignIn";
+import Post from "./Components/Post";
+
+import "./Stylling/Main.css";
+
 function App() {
-  return <SignUp />;
+  return (
+    <React.Fragment>
+      <Router>
+        <Switch>
+          <Route path="/Components/SignIn" component={SignIn} />
+          <Route path="/Components/SignUp" component={SignUp} />
+          <Route path="/Components/Post" component={Post} />
+        </Switch>
+      </Router>
+    </React.Fragment>
+  );
 }
 
 export default App;

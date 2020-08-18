@@ -1,0 +1,69 @@
+$marginTop: 20rem;
+
+@media (max-width: 568px) {
+  .Form {
+    margin-left: 12.62%;
+  }
+  .Form-Heading {
+    //background-color: green;
+  }
+}
+
+@media (min-width: 569px) {
+  .Form {
+    width: 28rem;
+    margin-left: 15%;
+    &-Text {
+      height: 3.5rem;
+    }
+    &-Box {
+      width: 88%;
+    }
+    &-Text:first-child,
+    .Form {
+      margin-top: $marginTop;
+    }
+    &-Icon {
+      margin-top: -12%;
+    }
+    &-Text:first-child {
+      margin-top: -0%;
+    }
+  }
+  .Div-Up {
+    height: 15rem;
+  }
+  .Form-Heading {
+    font-size: 5.7rem;
+    //background-color: orange;
+  }
+  .p {
+    padding-top: 1rem;
+  }
+}
+
+@media (min-width: 960px) {
+  // .Form-Heading {
+  //   background-color: greenyellow;
+  // }
+}
+
+@media (min-width: 1024px) {
+  .Form {
+    width: 34rem;
+    height: 22rem;
+    margin-left: 22%;
+
+    &-Heading {
+      font-size: 7rem;
+      // background-color: blue;
+    }
+  }
+
+  .lg {
+    width: 60%;
+  }
+}
+
+@media (min-width: 569px) {
+}

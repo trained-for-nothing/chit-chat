@@ -1,0 +1,28 @@
+$backColor: #5c0634;
+$background: linear-gradient(to left, $backColor, rgba(54, 52, 52, 0.945));
+$bacground-lg: linear-gradient(to bottom, $backColor, rgb(54, 52, 52));
+
+:root {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+}
+.Div-Up {
+  height: 6rem;
+  width: 100%;
+  text-align: center;
+  background: $background;
+}
+.head {
+  transform: translate(1%, 62%);
+  margin: 0;
+}
+.div {
+  position: absolute;
+  width: 100vw;
+  min-height: 100vh;
+  background: $bacground-lg;
+}
+@import "./Form";
+@import "./Media.scss";

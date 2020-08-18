@@ -1,0 +1,41 @@
+$font-color: white;
+$fontStyle: "Alex Brush", cursive;
+
+.Form {
+  width: 14.5rem;
+  height: 20rem;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24%;
+  margin-left: 10%;
+  text-align: center;
+  &-Icon {
+    margin-bottom: 7%;
+
+    &Move {
+      transform: translateX(-30px);
+    }
+  }
+  &-Heading {
+    font-family: $fontStyle;
+    text-align: center;
+  }
+  &-Text {
+    opacity: 3;
+    margin-top: 1em;
+  }
+}
+
+.Color {
+  background-color: rgba(128, 128, 128, 0.644);
+}
+.Text-Color {
+  color: $font-color;
+}
+.Box-Width {
+  width: 85%;
+}
+
+.h1 {
+  font-size: 2.4rem;
+}

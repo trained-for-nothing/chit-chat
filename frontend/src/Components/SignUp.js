@@ -1,39 +1,61 @@
 import React from "react";
-//import { Link } from "react-router";
-import { FormHelperText, TextField } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { FormHelperText, TextField, Button } from "@material-ui/core";
 import Account from "@material-ui/icons/AccountCircleRounded";
-import { array } from "./Array";
 
 export default function SignUp() {
-  const textFields = (Arrays) => {
-    return Arrays.map((item, index) => {
-      return (
-        <React.Fragment>
+  return (
+    <React.Fragment>
+      <div className="Div-Up">
+        <h1 className="Form-Heading h1 head Text-Color">Register</h1>
+      </div>
+      <div>
+        <form className="Form" style={{ marginTop: "15%" }}>
+          <Account className="Form-Icon" style={{ fontSize: "5rem" }} />
+          <br />
+
           <TextField
-            key={index}
-            type={item.type}
-            placeholder={item.text}
+            placeholder="UserName "
+            className="Form-Text lg"
             required
           />
           <br />
-        </React.Fragment>
-      );
-    });
-  };
-
-  return (
-    <React.Fragment>
-      <form style={{ textAlign: "center" }}>
-        <Account fontSize="large" />
-        <br />
-        {textFields(array)}
-      </form>
-      <FormHelperText style={{ textAlign: "center" }}>
-        Have an account?
-        {/* <Link color="primary" to="./SignIn">
-          Log in
-        </Link> */}
-      </FormHelperText>
+          <TextField
+            placeholder="Email-Id"
+            className="Form-Text lg pt"
+            required
+          />
+          <br />
+          <TextField
+            type="email"
+            placeholder="Lastname"
+            className="Form-Text lg"
+            required
+          />
+          <br />
+          <TextField
+            type="password"
+            placeholder="Password"
+            className="Form-Text lg"
+            required
+          />
+          <br />
+          <TextField
+            type="password"
+            placeholder="Confirm Password"
+            className="Form-Text lg"
+            required
+          />
+          <br />
+          <br />
+          <Button variant="contained">Register</Button>
+          <br />
+          <FormHelperText style={{ textAlign: "center" }}>
+            Have an account?
+            <a href="./SignIn">Log in</a>
+          </FormHelperText>
+        </form>
+      </div>
     </React.Fragment>
   );
 }
