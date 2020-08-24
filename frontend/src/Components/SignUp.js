@@ -52,7 +52,7 @@ export default function SignUp() {
           <br />
           <FormHelperText style={{ textAlign: "center" }}>
             Have an account?
-            <a href="./SignIn">Log in</a>
+            <Link to="./SignIn">Login</Link>
           </FormHelperText>
         </form>
       </div>
