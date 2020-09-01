@@ -1,24 +1,31 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import CardMedia from "@material-ui/core/CardMedia";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
+import {
+  Card,
+  CardContent,
+  CardActions,
+  CardMedia,
+  IconButton,
+  Typography,
+  Avatar,
+  CardHeader,
+} from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import img from "../chatting.jpg";
+import RoundedImage from "./Home/RoundedImage";
+import image from "C:/Users/lenovo/Desktop/chit-chat/frontend/src/IMG-20180721-WA0005.jpg";
 
 const useStyles = (theme) => ({
   root: {
-    maxWidth: 345,
-    marginLeft: "12%",
+    maxWidth: "100%",
+    height: "500px",
+    fontSize: ".7rem",
+
+    border: "1px solid grey",
   },
   media: {
     height: 0,
-    paddingTop: "56.25%", // 16:9
+    paddingTop: "56.25%",
   },
   colorRed: {
     color: red[500],
@@ -42,7 +49,27 @@ class Post extends Component {
     return (
       <React.Fragment>
         <Card className={classes.root}>
-          <CardMedia className={classes.media} image={img} title="Demo" />
+          <CardHeader
+            avatar={
+              <Avatar aria-label="User-Image">
+                <RoundedImage value={image} />
+              </Avatar>
+            }
+            title={this.props.user}
+            subheader={this.props.location}
+          />
+          <CardMedia className={classes.media} image={this.props.src} />
+
+          <CardActions className="m-0 p-0">
+            <IconButton
+              aria-label="add to favorites"
+              id="icon"
+              className={this.state.color ? classes.colorRed : ""}
+              onClick={this.handleClick}
+            >
+              <FavoriteIcon className="p-0 m-0" />
+            </IconButton>
+          </CardActions>
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
               This impressive paella is a perfect party dish and a fun meal to
@@ -50,20 +77,8 @@ class Post extends Component {
               with the mussels, if you like.
             </Typography>
           </CardContent>
-          <CardActions disableSpacing>
-            <IconButton
-              aria-label="add to favorites"
-              id="icon"
-              className={this.state.color ? classes.colorRed : ""}
-              onClick={this.handleClick}
-            >
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
-          </CardActions>
         </Card>
+        <br />
       </React.Fragment>
     );
   }

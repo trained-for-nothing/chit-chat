@@ -1,26 +1,31 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "normalize.css";
-import SignUp from "./Components/SignUp";
-import SignIn from "./Components/SignIn";
-import Post from "./Components/Post";
+import SignUp from "./Components/Admin/SignUp";
+import SignIn from "./Components/Admin/SignIn";
+import AssembleHome from "./Components/Home/AssembleHome";
 
 import "./Stylling/Main.css";
+const path = "/Components/";
 
 function App() {
+  console.log(path);
   return (
     <React.Fragment>
       <Router>
         <Switch>
-          <Route path="/Components/SignIn" component={SignIn} />
-          <Route path="/Components/SignUp" component={SignUp} />
-          <Route path="/Components/Post" component={Post} />
+          <Route path={`${path}SignIn`} component={SignIn} />
+          <Route path={`${path}SignUp`} component={SignUp} />
+          <Route
+            path="/Components/Home/AssembleHome"
+            component={AssembleHome}
+          />
         </Switch>
       </Router>
     </React.Fragment>
   );
 }
-
+//"/Components/SignUp"
 export default App;
 
 /* <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">

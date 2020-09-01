@@ -44,10 +44,8 @@ export default function Forms() {
             Sign In
           </Button>
           ;
-          <FormHelperText>
-            <p className="Text-Color" style={{ textAlign: "center" }}>
-              Forgot Password? <a href="#">Click Here</a>
-            </p>
+          <FormHelperText style={{ textAlign: "center", color: "white" }}>
+            Forgot Password? <a href="ww">Click Here</a>
           </FormHelperText>
         </form>
       </div>

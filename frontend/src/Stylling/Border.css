@@ -1,0 +1,7 @@
+.divs {
+  overflow-x: scroll;
+}
+
+.divs::-webkit-scrollbar {
+  display: none;
+}

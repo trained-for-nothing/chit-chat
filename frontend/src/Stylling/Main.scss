@@ -24,5 +24,6 @@ $bacground-lg: linear-gradient(to bottom, $backColor, rgb(54, 52, 52));
   min-height: 100vh;
   background: $bacground-lg;
 }
+
 @import "./Form";
 @import "./Media.scss";
