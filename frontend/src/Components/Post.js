@@ -18,14 +18,17 @@ import image from "C:/Users/lenovo/Desktop/chit-chat/frontend/src/IMG-20180721-W
 const useStyles = (theme) => ({
   root: {
     maxWidth: "100%",
-    height: "500px",
-    fontSize: ".7rem",
-
+    height: "450px",
     border: "1px solid grey",
   },
   media: {
-    height: 0,
-    paddingTop: "56.25%",
+    maxWidth: "100%",
+    height: "42%",
+    paddingTop: "30.25%",
+  },
+  typography: {
+    fontSize: "0.59rem",
+    lineHeight: "1.36",
   },
   colorRed: {
     color: red[500],
@@ -71,7 +74,7 @@ class Post extends Component {
             </IconButton>
           </CardActions>
           <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography component="p" className={classes.typography}>
               This impressive paella is a perfect party dish and a fun meal to
               cook together with your guests. Add 1 cup of frozen peas along
               with the mussels, if you like.
